@@ -1,0 +1,48 @@
+<h3>Heroe <small>{{ heroe.name }}</small></h3>
+<button class="btn btn-outline-danger"
+        [routerLink]="['/heroes']"
+        >
+        Back
+</button>
+
+<button (clic)="addNew(forma)"
+        type="button" class="btn btn-outline-success" >
+  New heroe
+</button>
+<hr>
+
+<div class="row animated fadeIn fast">
+  <div class="col-md-12">
+    <form (ngSubmit)="save()" #forma="ngForm" >
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="mame"
+                [(ngModel)]="heroe.name"
+                class="form-control"
+                placeholder="Hero's name"
+                required>
+      </div>
+      <div class="form-group">
+        <label>Home</label>
+        <select class="form-control" name="home"
+                [(ngModel)]="heroe.home">
+            <option value="Marvel">Marvel</option>
+            <option value="DC">DC</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea type="text" name="bio"
+                [(ngModel)]="heroe.bio"
+                class="form-control"
+                placeholder="Hero's bio"
+                required></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" (disabled)="!forma.valid" class="btn btn-outline-primary">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
